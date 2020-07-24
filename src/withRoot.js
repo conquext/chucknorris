@@ -23,6 +23,9 @@ function withRoot(Component) {
               background: {
                 light: "#e5edf7",
               },
+              color: {
+                error: "#fb1919",
+              },
             },
           })}
         >
