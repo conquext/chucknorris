@@ -1,61 +1,25 @@
 import React from "react";
 import InputBase from "@material-ui/core/InputBase";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import DirectionsIcon from "@material-ui/icons/Directions";
+import Tooltip from "@material-ui/core/Tooltip";
+import PropTypes from "prop-types";
+import Loading from "../Loading";
+import "./index.css";
+
+import AutorenewRoundedIcon from "@material-ui/icons/AutorenewRounded";
 
 const searchStyles = makeStyles((theme) => ({
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(1),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
-  },
-}));
-
-const suseStyles = makeStyles((theme) => ({
   root: {
     padding: "2px 4px",
+    marginTop: "1rem",
     display: "flex",
     alignItems: "center",
-    width: 400,
+    width: "100%",
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -68,37 +32,93 @@ const suseStyles = makeStyles((theme) => ({
     height: 28,
     margin: 4,
   },
+  disabled: {
+    opacity: 0.4,
+    cursor: "not-allowed",
+  },
+  loadingDisabled: {
+    cursor: "not-allowed",
+    pointerEvents: "none",
+  },
 }));
 
-export default function index() {
-  // const classes = searchStyles();
-  const classes = suseStyles();
+const Search = ({
+  searchJokes,
+  setJokesError,
+  resetQuery,
+  isLoading,
+  getARandomJoke,
+}) => {
+  const classes = searchStyles();
+  const [query, setQuery] = React.useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (query && query.length > 2) searchJokes(query);
+    else {
+      if (!query) resetQuery();
+      else
+        setJokesError({
+          message: "Search term must have atleast 3 characters.",
+        });
+    }
+  };
+
+  const handleInputChange = (e) => {
+    if (e && e.target) setQuery(e.target.value);
+    if (e && e.target && e.target.value && e.target.value.length > 2) {
+      searchJokes(e.target.value);
+    }
+    if (!e.target.value) resetQuery();
+  };
 
   return (
-    <Paper component="form" className={classes.root}>
+    <Paper component="form" className={`${classes.root} search-box`}>
       <IconButton className={classes.iconButton} aria-label="menu">
         <MenuIcon />
       </IconButton>
       <InputBase
         className={classes.input}
-        placeholder="Search Google Maps"
-        inputProps={{ "aria-label": "search google maps" }}
+        label="Multiline Placeholder"
+        placeholder="Try: Chuck Norris kick"
+        inputProps={{ "aria-label": "search chuck norris facts" }}
+        onChange={handleInputChange}
       />
-      <IconButton
-        type="submit"
-        className={classes.iconButton}
-        aria-label="search"
-      >
-        <SearchIcon />
-      </IconButton>
+      <Tooltip title={isLoading ? "Searching ... " : "Search"}>
+        <IconButton
+          type="submit"
+          className={`${classes.iconButton} ${
+            isLoading ? classes.loadingDisabled : ""
+          }`}
+          aria-label="search"
+          onClick={handleSearch}
+        >
+          {isLoading ? <Loading type="search" /> : <SearchIcon />}
+        </IconButton>
+      </Tooltip>
       <Divider className={classes.divider} orientation="vertical" />
-      <IconButton
-        color="primary"
-        className={classes.iconButton}
-        aria-label="search"
-      >
-        <DirectionsIcon />
-      </IconButton>
+      <Tooltip title={isLoading ? "" : "Random"}>
+        <IconButton
+          color="primary"
+          className={`${classes.iconButton} ${
+            isLoading ? classes.disabled : ""
+          }`}
+          aria-label="search"
+          onClick={getARandomJoke}
+        >
+          <AutorenewRoundedIcon />
+        </IconButton>
+      </Tooltip>
     </Paper>
   );
-}
+};
+
+export default Search;
+
+Search.propTypes = {
+  searchJokes: PropTypes.func.isRequired,
+  setJokesError: PropTypes.func.isRequired,
+  resetQuery: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  getARandomJoke: PropTypes.func.isRequired,
+};

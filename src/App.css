@@ -1,3 +1,9 @@
+@media screen and (max-width: 450px) {
+  body {
+    min-width: 400px;
+  }
+}
+
 .App {
   text-align: center;
 }

@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(2),
     },
   },
+  smallIcon: {
+    width: "20px !important",
+    height: "20px !important",
+  },
 }));
 
 export default function Loading({ type = "page" }) {
@@ -16,7 +20,9 @@ export default function Loading({ type = "page" }) {
   return (
     <div className={classes.root}>
       {type === "page" && <CircularProgress />}
-      {type === "search" && <CircularProgress color="secondary" />}
+      {type === "search" && (
+        <CircularProgress className={classes.smallIcon} color="secondary" />
+      )}
     </div>
   );
 }

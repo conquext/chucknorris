@@ -1,6 +1,7 @@
 import { actions } from "./actions";
 
 const {
+  RESET_QUERY,
   PAGE_LOADING,
   JOKES_LOADING,
   SEARCH_JOKES,
@@ -8,8 +9,18 @@ const {
   JOKES_SEARCH_SUCCESS,
 } = actions;
 
+export const initialState = {
+  jokes: [],
+  isLoading: false,
+  isSearching: false,
+  error: false,
+  searchError: null,
+  query: "",
+};
+
 // Reducers
 const REDUCERS = {
+  [RESET_QUERY]: () => initialState,
   [PAGE_LOADING]: (state, action) => ({
     ...state,
     isLoading: action.payload,
@@ -22,9 +33,9 @@ const REDUCERS = {
 
   [SEARCH_JOKES]: (state, action) => ({
     ...state,
-    jokes: [],
+    jokes: action.payload.jokes,
     hasError: false,
-    query: action.payload,
+    query: action.payload.query,
   }),
 
   [JOKES_SEARCH_SUCCESS]: (state, action) => ({
@@ -36,18 +47,11 @@ const REDUCERS = {
 
   [JOKES_SEARCH_ERROR]: (state, action) => ({
     ...state,
+    error: action.payload,
     hasError: true,
+    isLoading: false,
     isSearching: false,
   }),
-};
-
-export const initialState = {
-  jokes: [],
-  isLoading: false,
-  isSearching: false,
-  error: false,
-  searchError: null,
-  query: "",
 };
 
 const reducer = (state = initialState, action) => {
