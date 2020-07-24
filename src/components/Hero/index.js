@@ -1,38 +1,21 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import Button from "@material-ui/core/Button";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
+import PropTypes from "prop-types";
+import { importAll } from "../../utils";
 import Search from "../Search";
 import "./index.css";
 
+const chuckImages = importAll(
+  require.context("../../images", false, /\.(png|jpe?g|svg)$/)
+);
+
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const tutorialSteps = [
-  {
-    imgPath:
-      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-  {
-    imgPath:
-      "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-  {
-    imgPath:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80",
-  },
-  {
-    imgPath:
-      "https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-  {
-    imgPath:
-      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-];
+const allChuckImages = Object.keys(chuckImages);
 
 const heroStyle = makeStyles((theme) => ({
   heroContent: {
@@ -52,10 +35,15 @@ const heroStyle = makeStyles((theme) => ({
   },
 }));
 
-const Hero = ({ searchJokes, isLoading }) => {
+const Hero = ({
+  searchJokes,
+  resetQuery,
+  setJokesError,
+  getARandomJoke,
+  isLoading,
+}) => {
   const [activeStep, setActiveStep] = React.useState(0);
   const theme = useTheme();
-  const maxSteps = tutorialSteps.length;
 
   const classes = heroStyle();
 
@@ -69,34 +57,27 @@ const Hero = ({ searchJokes, isLoading }) => {
         <AutoPlaySwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={activeStep}
+          interval={20000}
           onChangeIndex={handleStepChange}
           enableMouseEvents
         >
-          {tutorialSteps.map((step, index) => (
+          {allChuckImages.map((img, index) => (
             <div key={index}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <img
-                  className={classes.img}
-                  src={step.imgPath}
-                  alt={step.label}
-                />
+                <img className={classes.img} src={chuckImages[img]} alt={img} />
               ) : null}
             </div>
           ))}
         </AutoPlaySwipeableViews>
         <div className={classes.heroButtons}>
           <Grid container spacing={4} justify="center">
-            <Search searchJokes={searchJokes} isLoading={isLoading} />
-            {/* <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid> */}
-            {/* <Grid item>
-              <Button variant="outlined" color="primary">
-                Secondary action
-              </Button>
-            </Grid> */}
+            <Search
+              searchJokes={searchJokes}
+              resetQuery={resetQuery}
+              setJokesError={setJokesError}
+              getARandomJoke={getARandomJoke}
+              isLoading={isLoading}
+            />
           </Grid>
         </div>
       </Container>
@@ -105,3 +86,11 @@ const Hero = ({ searchJokes, isLoading }) => {
 };
 
 export default Hero;
+
+Hero.propTypes = {
+  searchJokes: PropTypes.func.isRequired,
+  resetQuery: PropTypes.func.isRequired,
+  setJokesError: PropTypes.func.isRequired,
+  getARandomJoke: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+};
