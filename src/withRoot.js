@@ -19,6 +19,11 @@ function withRoot(Component) {
         <MuiThemeProvider
           theme={createMuiTheme({
             direction: i18n.dir(),
+            palette: {
+              background: {
+                light: "#e5edf7",
+              },
+            },
           })}
         >
           <Component {...props} />
