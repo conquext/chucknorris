@@ -103,7 +103,7 @@ const Search = ({
           className={`${classes.iconButton} ${
             isLoading ? classes.disabled : ""
           }`}
-          aria-label="search"
+          aria-label="searchRandom"
           onClick={getARandomJoke}
         >
           <AutorenewRoundedIcon />

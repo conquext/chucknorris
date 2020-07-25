@@ -42,11 +42,11 @@ const JokesContainer = ({ jokes = [] }) => {
   const totalJokes = jokes.length;
   return (
     <Container className={classes.cardGrid} maxWidth="md">
-      <div id="back-to-first-joke-anchor" />
+      {totalJokes > pageSize ? <div id="back-to-first-joke-anchor" /> : ""}
       <section className="jokes-list">
-        <div className={classes.header}>{`${
-          totalJokes > 1 ? `${totalJokes} matches` : ""
-        }`}</div>
+        {totalJokes > 1 && (
+          <div className={classes.header}>{`${totalJokes} matches`}</div>
+        )}
         <JokesList jokes={currentJokes} />
       </section>
       <Pagination
