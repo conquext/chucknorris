@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -33,53 +33,61 @@ const Header = () => {
     window.history.pushState(`#${lng}`, lng, `#${lng}`);
   };
 
-  useLayoutEffect(() => {
+  const changeTheLanguage = useCallback(changeLanguage, []);
+
+  useEffect(() => {
     const location = window.location;
     let supportedLanguages = ["en", "ar", "he"];
     const hash = location.hash || location.pathname || "en";
     const languagePath = hash.slice(-2);
-    if (supportedLanguages.includes(languagePath)) changeLanguage(languagePath);
+    if (supportedLanguages.includes(languagePath))
+      changeTheLanguage(languagePath);
 
     return () => null;
-  }, []);
+  }, [changeTheLanguage]);
 
   return (
     <AppBar position="relative">
       <Toolbar className={classes.root}>
-        <Typography variant="h6" color="inherit" noWrap>
-          Chuck Norris Fact Finder
-        </Typography>
-        <Typography
-          variant="h6"
-          color="inherit"
-          noWrap
-          className={classes.langPick}
-        >
-          {t("language")}
+        <div>
+          <Typography variant="h6" color="inherit" noWrap>
+            {t("title")}
+          </Typography>
+        </div>
+        <div>
+          <Typography
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.langPick}
+          >
+            {t("language")}
+          </Typography>
+
           <div className={classes.langPickItem}>
             <button
               href="#en"
               aria-label="english"
-              onClick={() => changeLanguage("en")}
+              onClick={() => changeTheLanguage("en")}
             >
               en
             </button>
             <button
               href="#ar"
               aria-label="arabic"
-              onClick={() => changeLanguage("ar")}
+              onClick={() => changeTheLanguage("ar")}
             >
               ar
             </button>
             <button
               href="#he"
               aria-label="hebrew"
-              onClick={() => changeLanguage("he")}
+              onClick={() => changeTheLanguage("he")}
             >
               he
             </button>
           </div>
-        </Typography>
+        </div>
       </Toolbar>
     </AppBar>
   );
