@@ -22,7 +22,7 @@ const JokesList = ({ jokes = [] }) => {
     <Container className={classes.root} maxWidth="md">
       <List component="nav" aria-label="jokes">
         {jokes.map((joke, index) => (
-          <Paper elevation={2} className={classes.list} key={index}>
+          <Paper elevation={2} className={`${classes.list} a-joke`} key={index}>
             <Joke joke={joke} />
           </Paper>
         ))}
