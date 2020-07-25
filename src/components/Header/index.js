@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@material-ui/core/styles";
 
-const headerStyle = makeStyles((theme) => ({
+const headerStyle = makeStyles(() => ({
   root: {
     display: "flex",
     flexFlow: "row",
