@@ -1,0 +1,145 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-07-25T13:43:51.147Z",
+    "end": "2020-07-25T13:43:52.615Z",
+    "duration": 1468,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e412e397-077d-473c-823a-e296e7f7feca",
+      "title": "",
+      "fullFile": "cypress\\integration\\QAM\\layout.spec.js",
+      "file": "cypress\\integration\\QAM\\layout.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4033673c-f1bf-4f0c-b075-a03b33450832",
+          "title": "Page Layout",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Has left alignment by default",
+              "fullTitle": "Page Layout Has left alignment by default",
+              "timedOut": null,
+              "duration": 774,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/\");\ncy.viewport(1680, 1050);\ncy.get(\"header\").should(\"be.leftAligned\", \"main\");",
+              "err": {},
+              "uuid": "18835d51-2439-4895-9ade-10c2a270e729",
+              "parentUUID": "4033673c-f1bf-4f0c-b075-a03b33450832",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Has ltr layout",
+              "fullTitle": "Page Layout Has ltr layout",
+              "timedOut": null,
+              "duration": 322,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/\");\ncy.viewport(1680, 1050);\ncy.get(\".App > header > div > div:nth-child(2) div\").within(function () {\n  cy.get(\"button[aria-label='arabic']\").click();\n});\ncy.get(\"body[dir='rtl'\").should(\"be.visible\");",
+              "err": {},
+              "uuid": "d27b7449-1400-41da-881b-5e580b8cbbd9",
+              "parentUUID": "4033673c-f1bf-4f0c-b075-a03b33450832",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Has rtl layout",
+              "fullTitle": "Page Layout Has rtl layout",
+              "timedOut": null,
+              "duration": 335,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/\");\ncy.viewport(1680, 1050);\ncy.get(\".App > header > div > div:nth-child(2) div\").within(function () {\n  cy.get(\"button[aria-label='english']\").click();\n});\ncy.get(\"body[dir='ltr'\").should(\"be.visible\");",
+              "err": {},
+              "uuid": "0da0a7e4-172c-48f1-92dd-ada833eb1f0e",
+              "parentUUID": "4033673c-f1bf-4f0c-b075-a03b33450832",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "18835d51-2439-4895-9ade-10c2a270e729",
+            "d27b7449-1400-41da-881b-5e580b8cbbd9",
+            "0da0a7e4-172c-48f1-92dd-ada833eb1f0e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1431,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

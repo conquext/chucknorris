@@ -1,0 +1,169 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 3,
+    "pending": 0,
+    "failures": 1,
+    "start": "2020-07-25T11:47:39.013Z",
+    "end": "2020-07-25T11:47:45.177Z",
+    "duration": 6164,
+    "testsRegistered": 4,
+    "passPercent": 75,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6898f91d-a5dd-4d53-8a00-43738db942a3",
+      "title": "",
+      "fullFile": "cypress\\integration\\QAM\\url.spec.js",
+      "file": "cypress\\integration\\QAM\\url.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "021671b9-d2a4-4e9b-b83d-4b96a1f1129a",
+          "title": "Supports Multiple Language",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Get the arabic page",
+              "fullTitle": "Supports Multiple Language Get the arabic page",
+              "timedOut": null,
+              "duration": 5035,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/#/ar\");\ncy.get(\".App > header div:first h6\").contains(\"Chuck Norris Fact Finder\").not();\ncy.get(\"body[dir='rtl'\").should(\"be.visible\");",
+              "err": {
+                "message": "AssertionError: Timed out retrying: Expected to find content: 'Chuck Norris Fact Finder' within the element: [ <h6.MuiTypography-root.MuiTypography-h6.MuiTypography-colorInherit.MuiTypography-noWrap>, 1 more... ] but never did.",
+                "estack": "AssertionError: Timed out retrying: Expected to find content: 'Chuck Norris Fact Finder' within the element: [ <h6.MuiTypography-root.MuiTypography-h6.MuiTypography-colorInherit.MuiTypography-noWrap>, 1 more... ] but never did.\n    at Context.eval (http://localhost:3006/__cypress/tests?p=cypress\\integration\\QAM\\url.spec.js:7:42)",
+                "diff": null
+              },
+              "uuid": "77861331-4ef5-4b8f-8215-d523d454fb2b",
+              "parentUUID": "021671b9-d2a4-4e9b-b83d-4b96a1f1129a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get the hebrew page",
+              "fullTitle": "Supports Multiple Language Get the hebrew page",
+              "timedOut": null,
+              "duration": 402,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/#/he\");\ncy.hash().should(\"eq\", \"#he\");\ncy.get(\"body[dir='rtl'\").should(\"be.visible\");",
+              "err": {},
+              "uuid": "1ec52582-2ae2-41ef-a658-a9874be9922b",
+              "parentUUID": "021671b9-d2a4-4e9b-b83d-4b96a1f1129a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get the english page by default",
+              "fullTitle": "Supports Multiple Language Get the english page by default",
+              "timedOut": null,
+              "duration": 277,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/\");\ncy.get(\"body[dir='ltr'\").should(\"be.visible\");",
+              "err": {},
+              "uuid": "b9e1b294-8a8d-480e-a612-6f4d0e232859",
+              "parentUUID": "021671b9-d2a4-4e9b-b83d-4b96a1f1129a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get the english page for unsupported language specified in url",
+              "fullTitle": "Supports Multiple Language Get the english page for unsupported language specified in url",
+              "timedOut": null,
+              "duration": 339,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/ch\");\ncy.get(\".App > header div:first h6\").contains(\"Chuck Norris Fact Finder\");\ncy.get(\"body[dir='ltr'\").should(\"be.visible\");",
+              "err": {},
+              "uuid": "544cb5e9-dba2-4f16-b01c-9de780b29ec9",
+              "parentUUID": "021671b9-d2a4-4e9b-b83d-4b96a1f1129a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1ec52582-2ae2-41ef-a658-a9874be9922b",
+            "b9e1b294-8a8d-480e-a612-6f4d0e232859",
+            "544cb5e9-dba2-4f16-b01c-9de780b29ec9"
+          ],
+          "failures": [
+            "77861331-4ef5-4b8f-8215-d523d454fb2b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 6053,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

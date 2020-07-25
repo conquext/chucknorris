@@ -1,0 +1,145 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-07-25T12:13:26.959Z",
+    "end": "2020-07-25T12:13:28.286Z",
+    "duration": 1327,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "fb5b2ce3-56a6-40b7-818a-c9ee0a92e394",
+      "title": "",
+      "fullFile": "cypress\\integration\\QAM\\front_page.spec.js",
+      "file": "cypress\\integration\\QAM\\front_page.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0d458504-cd05-4a51-a443-80e61e91c266",
+          "title": "Front Page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Loads the page",
+              "fullTitle": "Front Page Loads the page",
+              "timedOut": null,
+              "duration": 1166,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/\");\ncy.title().should(\"eq\", \"Chuck Norris Facts\");\ncy.location(\"protocol\").should(\"eq\", \"http:\");",
+              "err": {},
+              "uuid": "ab2f0d44-e873-43f6-9110-9216757a9111",
+              "parentUUID": "0d458504-cd05-4a51-a443-80e61e91c266",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Has a header",
+              "fullTitle": "Front Page Has a header",
+              "timedOut": null,
+              "duration": 57,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(\".App > header div:first h6\").should(\"be.visible\");",
+              "err": {},
+              "uuid": "815e3578-1c8b-4e9f-816d-5eee0c51bb5d",
+              "parentUUID": "0d458504-cd05-4a51-a443-80e61e91c266",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Has a search input",
+              "fullTitle": "Front Page Has a search input",
+              "timedOut": null,
+              "duration": 54,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[aria-label=\"search chuck norris facts\"]').should(\"be.visible\");",
+              "err": {},
+              "uuid": "42485f90-20de-4730-8ccc-db927342e4c6",
+              "parentUUID": "0d458504-cd05-4a51-a443-80e61e91c266",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ab2f0d44-e873-43f6-9110-9216757a9111",
+            "815e3578-1c8b-4e9f-816d-5eee0c51bb5d",
+            "42485f90-20de-4730-8ccc-db927342e4c6"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1277,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

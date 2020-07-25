@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2020-07-25T08:40:46.132Z",
+    "end": "2020-07-25T08:40:52.496Z",
+    "duration": 6364,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "09cc9756-2662-4570-8050-65f71c96ae70",
+      "title": "",
+      "fullFile": "cypress\\integration\\QAM\\front_page.spec.js",
+      "file": "cypress\\integration\\QAM\\front_page.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f994415b-f1c7-4077-97fa-e382bece742a",
+          "title": "Front Page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Has header",
+              "fullTitle": "Front Page Has header",
+              "timedOut": null,
+              "duration": 6242,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/\");\ncy.get(\".App > header div:first h6\").contains(\"Chuk Norris Fact Finderx\").should(\"be.visible\");",
+              "err": {
+                "message": "AssertionError: Timed out retrying: Expected to find content: 'Chuk Norris Fact Finderx' within the element: [ <h6.MuiTypography-root.MuiTypography-h6.MuiTypography-colorInherit.MuiTypography-noWrap>, 1 more... ] but never did.",
+                "estack": "AssertionError: Timed out retrying: Expected to find content: 'Chuk Norris Fact Finderx' within the element: [ <h6.MuiTypography-root.MuiTypography-h6.MuiTypography-colorInherit.MuiTypography-noWrap>, 1 more... ] but never did.\n    at Context.eval (http://localhost:3006/__cypress/tests?p=cypress\\integration\\QAM\\front_page.spec.js:7:79)",
+                "diff": null
+              },
+              "uuid": "2c10d315-4076-4e36-b37c-6b0dab3f43ac",
+              "parentUUID": "f994415b-f1c7-4077-97fa-e382bece742a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "2c10d315-4076-4e36-b37c-6b0dab3f43ac"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 6242,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}
