@@ -5,7 +5,7 @@ import List from "@material-ui/core/List";
 import Container from "@material-ui/core/Container";
 import Joke from "../Joke";
 
-const jokeStyles = makeStyles((theme) => ({
+const jokeStyles = makeStyles(() => ({
   root: {
     width: "100%",
   },
