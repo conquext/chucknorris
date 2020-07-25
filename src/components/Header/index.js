@@ -35,10 +35,10 @@ const Header = () => {
 
   useLayoutEffect(() => {
     const location = window.location;
-    let supportedLanguage = ["en", "ar", "he"];
+    let supportedLanguages = ["en", "ar", "he"];
     const hash = location.hash || location.pathname || "en";
     const languagePath = hash.slice(-2);
-    if (supportedLanguage.includes(languagePath)) changeLanguage(languagePath);
+    if (supportedLanguages.includes(languagePath)) changeLanguage(languagePath);
 
     return () => null;
   }, []);
