@@ -25,18 +25,23 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 `yarn run build`
 
-## Technologies Used
+### Technologies Used
 
-### React CRA
+#### React CRA
 
-- Great for quickly boostrapping static webpages with zero configurations
-- Very easy to deploy
+- Great for quickly boostrapping static webpages with zero configurations.
 
-### Vercel
+#### Vercel
 
-- Great for static deployment, also free
+- Great for static deployment, also free.
 
-### Material UI
+#### Cypress
 
-- Wonderful CSS framework, with lot of customizable template to get up and running
-- Also great for theming, makes implementing RTL relatively easy.
+- Wonderful tool for End to End & UI testing that runs in the browser.
+
+### Features
+
+- Material UI for responsive page layout
+- Support for RTL using jss-rtl & i18next
+- JSS using jss-rtl for dynamic theming and lazy evaluation
+- Localization using react-i18next
