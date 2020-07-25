@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -30,12 +30,24 @@ const Header = () => {
     i18n.changeLanguage(lng);
     document.body.dir = i18n.dir();
     theme.direction = i18n.dir();
+    window.history.pushState(`#${lng}`, lng, `#${lng}`);
   };
+
+  useLayoutEffect(() => {
+    const location = window.location;
+    let supportedLanguage = ["en", "ar", "he"];
+    const hash = location.hash || location.pathname || "en";
+    const languagePath = hash.slice(-2);
+    if (supportedLanguage.includes(languagePath)) changeLanguage(languagePath);
+
+    return () => null;
+  }, []);
+
   return (
     <AppBar position="relative">
       <Toolbar className={classes.root}>
         <Typography variant="h6" color="inherit" noWrap>
-          Chuk Norris Fact Finder
+          Chuck Norris Fact Finder
         </Typography>
         <Typography
           variant="h6"
@@ -45,9 +57,27 @@ const Header = () => {
         >
           {t("language")}
           <div className={classes.langPickItem}>
-            <button onClick={() => changeLanguage("en")}>en</button>
-            <button onClick={() => changeLanguage("ar")}>ar</button>
-            <button onClick={() => changeLanguage("he")}>he</button>
+            <button
+              href="#en"
+              aria-label="english"
+              onClick={() => changeLanguage("en")}
+            >
+              en
+            </button>
+            <button
+              href="#ar"
+              aria-label="arabic"
+              onClick={() => changeLanguage("ar")}
+            >
+              ar
+            </button>
+            <button
+              href="#he"
+              aria-label="hebrew"
+              onClick={() => changeLanguage("he")}
+            >
+              he
+            </button>
           </div>
         </Typography>
       </Toolbar>
