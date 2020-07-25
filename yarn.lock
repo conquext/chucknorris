@@ -1318,6 +1318,13 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
+"@david-boydell/cypress-layout@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@david-boydell/cypress-layout/-/cypress-layout-0.0.2.tgz#02ffdc0df22af6fa0876d63e20cd6a2d3bec1358"
+  integrity sha512-Mf0hCNJu9Ruu/r4PdrGQeeCg0iAPcM0PH+mt/c3h6ivFSPFrOh3gI60l+PgrgJoUIwP4arPs6bcRQT4x3NUY/w==
+  dependencies:
+    deep-equal "^1.1.1"
+
 "@emotion/hash@^0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
@@ -4473,7 +4480,7 @@ deep-eql@^3.0.1:
   dependencies:
     type-detect "^4.0.0"
 
-deep-equal@^1.0.1:
+deep-equal@^1.0.1, deep-equal@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.1.1.tgz#b5c98c942ceffaf7cb051e24e1434a25a2e6076a"
   integrity sha512-yd9c5AdiqVcR+JjcwUQb9DkhJc8ngNr0MahEBGvDiJw8puWab2yZlh+nkasOnZP+EGTAP6rRp2JzJhJZzvNF8g==
